@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RandomUser</string>
+    <string name="search_action_description">Search an user</string>
 </resources>
