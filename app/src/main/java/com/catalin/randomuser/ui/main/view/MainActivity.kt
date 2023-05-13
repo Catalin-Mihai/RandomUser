@@ -1,8 +1,8 @@
 package com.catalin.randomuser.ui.main.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
 import com.catalin.randomuser.R
 import com.catalin.randomuser.databinding.ActivityMainBinding
 

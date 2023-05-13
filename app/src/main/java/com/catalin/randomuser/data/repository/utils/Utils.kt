@@ -13,7 +13,7 @@ import com.catalin.randomuser.data.repository.model.Street
 import com.catalin.randomuser.data.repository.model.User
 
 fun UserDto.toRepoModel() = User(
-    gender = Gender.valueOf(gender),
+    gender = Gender.valueOf(gender.uppercase()),
     name = name.toRepoModel(),
     location = location.toRepoModel(),
     email = email,
