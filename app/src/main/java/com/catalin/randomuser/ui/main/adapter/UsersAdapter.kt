@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.catalin.randomuser.data.repository.model.User
 import com.catalin.randomuser.databinding.UserListItemBinding
 
-class PagingChatAdapter() : PagingDataAdapter<User, UserItemViewHolder>(COMPARATOR) {
+class PagingUsersAdapter : PagingDataAdapter<User, UserItemViewHolder>(COMPARATOR) {
 
     companion object {
         private val COMPARATOR = object : DiffUtil.ItemCallback<User>() {

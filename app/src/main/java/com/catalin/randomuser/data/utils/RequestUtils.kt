@@ -1,4 +1,4 @@
-package com.catalin.randomuser.data.repository.utils
+package com.catalin.randomuser.data.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow

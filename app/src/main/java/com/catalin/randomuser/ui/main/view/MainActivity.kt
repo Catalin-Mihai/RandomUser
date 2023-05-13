@@ -1,7 +1,6 @@
 package com.catalin.randomuser.ui.main.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +8,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.catalin.randomuser.R
-import com.catalin.randomuser.data.repository.utils.Result
 import com.catalin.randomuser.databinding.ActivityMainBinding
 import com.catalin.randomuser.ui.base.ViewModelFactory
 import com.catalin.randomuser.ui.main.viewmodel.MainViewModel
@@ -40,27 +38,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun loadServerData() {
         lifecycleScope.launch {
-            viewModel.getUsers()
+            viewModel.getUsersAsPagingFlow()
                 .flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
                 .collect {
-                    when (it) {
-                        Result.Loading -> {
-                            Log.e(MainActivity::class.simpleName, "Loading...")
-                        }
-
-                        is Result.Success -> {
-                            Log.e(MainActivity::class.simpleName, "Success: $it")
-                        }
-
-                        is Result.Error -> {
-                            Log.e(
-                                MainActivity::class.simpleName,
-                                "Error: ${it.error?.message ?: ""}"
-                            )
-                        }
-                    }
+                    //TODO
                 }
         }
     }

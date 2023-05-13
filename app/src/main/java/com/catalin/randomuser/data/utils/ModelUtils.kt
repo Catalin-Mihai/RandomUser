@@ -1,4 +1,4 @@
-package com.catalin.randomuser.data.repository.utils
+package com.catalin.randomuser.data.utils
 
 import com.catalin.randomuser.data.network.dto.AvatarDto
 import com.catalin.randomuser.data.network.dto.IdentifierDto
