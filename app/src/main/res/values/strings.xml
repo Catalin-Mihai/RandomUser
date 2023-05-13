@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">RandomUser</string>
     <string name="search_action_description">Search an user</string>
+    <string name="avatar_content_description">Profile picture</string>
+    <string name="attachments_content_description">Has attachments</string>
+    <string name="user_description_template">%1$s from %2$s</string>
+    <string name="day_time_template">%1$d:%2$d</string>
 </resources>

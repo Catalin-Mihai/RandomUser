@@ -6,6 +6,6 @@ import com.catalin.randomuser.data.repository.utils.toRepoModel
 
 class UserRepository(private val apiService: ApiService) {
     suspend fun getUsers() =
-        genericHandle { apiService.fetchUsers().users.map { it.toRepoModel() } }
+        genericHandle { apiService.fetchUsers(10).users.map { it.toRepoModel() } }
 
 }

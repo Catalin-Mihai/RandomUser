@@ -1,12 +1,14 @@
 package com.catalin.randomuser.data.repository.utils
 
 import com.catalin.randomuser.data.network.dto.AvatarDto
+import com.catalin.randomuser.data.network.dto.IdentifierDto
 import com.catalin.randomuser.data.network.dto.LocationDto
 import com.catalin.randomuser.data.network.dto.NameDto
 import com.catalin.randomuser.data.network.dto.StreetDto
 import com.catalin.randomuser.data.network.dto.UserDto
 import com.catalin.randomuser.data.repository.model.Avatar
 import com.catalin.randomuser.data.repository.model.Gender
+import com.catalin.randomuser.data.repository.model.Identifier
 import com.catalin.randomuser.data.repository.model.Location
 import com.catalin.randomuser.data.repository.model.Name
 import com.catalin.randomuser.data.repository.model.Street
@@ -17,7 +19,9 @@ fun UserDto.toRepoModel() = User(
     name = name.toRepoModel(),
     location = location.toRepoModel(),
     email = email,
-    avatar = avatar.toRepoModel()
+    avatar = avatar.toRepoModel(),
+    id = id.toRepoModel(),
+    age = dob.age
 )
 
 fun NameDto.toRepoModel() = Name(
@@ -34,5 +38,9 @@ fun StreetDto.toRepoModel() = Street(
 
 fun AvatarDto.toRepoModel() = Avatar(
     url = url
+)
+
+fun IdentifierDto.toRepoModel() = Identifier(
+    name = name, value = value
 )
 

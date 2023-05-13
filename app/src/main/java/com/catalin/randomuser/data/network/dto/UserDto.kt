@@ -8,7 +8,9 @@ data class UserDto(
     val location: LocationDto,
     val email: String,
     @SerializedName("picture")
-    val avatar: AvatarDto
+    val avatar: AvatarDto,
+    val id: IdentifierDto,
+    val dob: DobDto
 )
 
 data class NameDto(
@@ -32,4 +34,14 @@ data class LocationDto(
 data class StreetDto(
     val number: Int,
     val name: String
+)
+
+data class IdentifierDto(
+    val name: String?,
+    val value: String?
+)
+
+data class DobDto(
+    val date: String,
+    val age: Int
 )
