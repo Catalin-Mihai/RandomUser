@@ -5,6 +5,9 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.catalin.randomuser.R
 import com.catalin.randomuser.data.repository.model.User
 import com.catalin.randomuser.databinding.UserListItemBinding
 
@@ -31,14 +34,22 @@ class PagingUsersAdapter : PagingDataAdapter<User, UserItemViewHolder>(COMPARATO
     }
 
     override fun onBindViewHolder(holder: UserItemViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it) }
+        getItem(position)?.let { holder.bind(it, position) }
     }
 }
 
 class UserItemViewHolder(
     private val binding: UserListItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: User) {
-        binding.user = item
+    fun bind(item: User, position: Int) {
+        binding.apply {
+            user = item
+            Glide.with(binding.root.context)
+                .load(item.avatar.url)
+                .placeholder(R.drawable.ic_avatar)
+                .apply(RequestOptions.circleCropTransform())
+                .into(avatar)
+            debugText.text = "${position + 1}"
+        }
     }
 }

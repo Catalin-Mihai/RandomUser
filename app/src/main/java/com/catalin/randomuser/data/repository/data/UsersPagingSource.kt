@@ -6,8 +6,10 @@ import androidx.paging.PagingState
 import com.catalin.randomuser.data.repository.model.User
 
 class UsersPagingSource(
+    private val maxPagesLoaded: Int,
     private val fetchUsers: suspend (pageKey: Int, loadSize: Int) -> List<User>
 ) : PagingSource<Int, User>() {
+
     override fun getRefreshKey(state: PagingState<Int, User>): Int? {
         return null
     }
@@ -16,12 +18,20 @@ class UsersPagingSource(
         val pageKey = params.key ?: 1
         val loadSize = params.loadSize
 
-        return toLoadResult(fetchUsers(pageKey, loadSize).also {
-            Log.d(
-                UsersPagingSource::class.simpleName,
-                "Served page: $pageKey. Fetched ${it.size} results!"
-            )
-        }, position = pageKey, loadSize = loadSize)
+        if (pageKey > maxPagesLoaded) {
+            return LoadResult.Error(Exception("Maximum number of fetched pages reached!"))
+        }
+
+        return kotlin.runCatching {
+            fetchUsers(pageKey, loadSize)
+        }.map {
+            toLoadResult(it.also {
+                Log.d(
+                    UsersPagingSource::class.simpleName,
+                    "Served page: $pageKey. Fetched ${it.size} results!"
+                )
+            }, position = pageKey, loadSize = loadSize)
+        }.getOrElse { LoadResult.Error(it) }
     }
 
     private fun toLoadResult(

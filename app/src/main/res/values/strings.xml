@@ -5,4 +5,7 @@
     <string name="attachments_content_description">Has attachments</string>
     <string name="user_description_template">%1$s from %2$s</string>
     <string name="day_time_template">%1$d:%2$d</string>
+    <string name="action_edit_entry">Edit an entry</string>
+    <string name="loading_new_page">"Loading new page…"</string>
+    <string name="initial_loading_error">Something went wrong while loading users. Please try again!</string>
 </resources>
