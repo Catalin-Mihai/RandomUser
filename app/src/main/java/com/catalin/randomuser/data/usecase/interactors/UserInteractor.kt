@@ -1,4 +1,4 @@
-package com.catalin.randomuser.data.usecase
+package com.catalin.randomuser.data.usecase.interactors
 
 import com.catalin.randomuser.data.repository.repos.UserRepository
 
